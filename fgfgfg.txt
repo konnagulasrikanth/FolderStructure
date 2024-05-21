@@ -1,0 +1,71 @@
+    try
+    {
+        ScopeEffortList.Clear();
+        // Fetch resources from the database
+        var res = db.ScopeAndEffort.Where(t => t.ProjectId == Form1.projectid).ToList();
+
+        // Clear the resources list
+        
+
+        // Populate FunctionalSubAreaName column from the database based on FunctionalAreaName
+        foreach (ScopeAndEffort item in res)
+        {
+            var functionalSubArea = db.FunctionalArea
+                .FirstOrDefault(f => f.FunctionalAreaName == item.FunctionalAreaName && f.ProjectId == Form1.projectid);
+            if (functionalSubArea != null)
+            {
+                item.FunctionalSubAreaName = functionalSubArea.FunctionalSubAreaName;
+            }
+
+            // Add the fetched item to the list
+            ScopeEffortList.Add(item);
+        }
+
+        // Set the DataGridView data source after adding items to ScopeEffortList
+        dataGridView1.DataSource = ScopeEffortList;
+    }
+    catch (Exception ex)
+    {
+        // Handle exception
+        MessageBox.Show($"Error loading scope data: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+    }
+}
+
+
+
+
+
+-----------------original load scope
+
+       //    try
+       //    {
+       //        // Clear the resources list
+       //        ScopeEffortList.Clear();
+
+       //        // Fetch resources from the database
+       //        var res = db.ScopeAndEffort.Where(t => t.ProjectId == Form1.projectid).ToList();
+
+       //        // Add the fetched resources to the resources list
+       //        foreach (ScopeAndEffort item in res)
+       //        {
+       //            ScopeEffortList.Add(item);
+       //        }
+
+       //        // Set the DataGridView data source
+       //        dataGridView1.DataSource = ScopeEffortList;
+       //        // Call PopulateFunctionalSubAreaComboBox for each row after setting the data source
+       //        foreach (DataGridViewRow row in dataGridView1.Rows)
+       //        {
+       //            string functionalAreaName = row.Cells["FunctionalAreaName"].Value?.ToString();
+       //            PopulateFunctionalSubAreaComboBox(functionalAreaName, row.Index);
+       //        }
+
+
+       //    }
+       //    catch (Exception ex)
+       //    {
+       //        // Handle exception
+       //        MessageBox.Show($"Error loading scope data: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+       //    }
+
+       //}

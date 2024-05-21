@@ -1,0 +1,29 @@
+no scroll
+
+add/edit/delete   camelcase
+functional area link to sub functional area
+
+phase 
+don't mix timeline and resources and make it week wise
+
+remove functionality column in timeline resource allocation.
+
+
+prodcutivity
+
+round of one decimal maximum should be 
+
+and also productivity.
+
+
+resreq should 1 number based on that there should have based on that months.
+
+
+build&&design 
+qa should not cross the requirment.
+
+
+effort in scope should decimal.
+
+
+
